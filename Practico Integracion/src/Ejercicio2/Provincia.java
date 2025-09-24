@@ -8,4 +8,9 @@ public class Provincia {
     private Ciudad capital;
     private List<Provincia> limitaConProvincias;
     private List<Pais> limitaConPaises;
+
+    public void setCapital(Ciudad capital) { this.capital = capital; }
+    public void setCiudades(List<Ciudad> ciudades) { this.ciudades = ciudades; }
+    public Ciudad getCapital() { return capital; }
+    public List<Ciudad> getCiudades() { return ciudades; }
 }

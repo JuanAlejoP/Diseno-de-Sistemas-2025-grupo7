@@ -19,7 +19,7 @@ public class Provincia {
     public List<Ciudad> getCiudadesEnDeficit() {
         List<Ciudad> enDeficit = new ArrayList<>();
         for (Ciudad c : ciudades) {
-            if (c.estaEnDeficit()) {
+            if (c.getHabitantes() > 100000 && c.estaEnDeficit()) {
                 enDeficit.add(c);
             }
         }
@@ -28,10 +28,14 @@ public class Provincia {
 
     public boolean tieneDeficitGeneral() {
         int deficit = 0;
+        int ciudadesConsideradas = 0;
         for (Ciudad c : ciudades) {
-            if (c.estaEnDeficit()) deficit++;
+            if (c.getHabitantes() > 100000) {
+                ciudadesConsideradas++;
+                if (c.estaEnDeficit()) deficit++;
+            }
         }
-        return deficit > ciudades.size() / 2;
+        return ciudadesConsideradas > 0 && deficit > ciudadesConsideradas / 2;
     }
 
     public String getNombre() {
